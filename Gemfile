@@ -52,7 +52,7 @@ group :development, :test do
 
   gem 'rmagick'
   gem 'carrierwave'
-  gem 'bootstrap-sass', '~> 3.2.0'
+  gem 'bootstrap-sass', '~> 3.2.0.2'
   gem 'autoprefixer-rails'
   
 end
