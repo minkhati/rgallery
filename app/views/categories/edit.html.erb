@@ -1,0 +1,35 @@
+<h2>Edit Category</h2>
+
+<%= form_for @category do |f| %>
+	<!-- Check for errors if any -->
+	<% if @category.errors.any? %>
+		<% @category.errors.full_messages.each do |msg | %>
+			<!-- Show each error message -->
+			<div class="alert alert-danger"><%= msg %></div>
+		<% end %>
+	<% end %>
+
+	<div class='form-group'>
+		<%= f.label :name %><br />
+		<%= f.text_field :name, class:'form-control' %><br />
+	</div>
+
+	<%= f.submit 'Submit', class:'btn btn-primary' %>
+	<%= link_to "Cancel", root_path, class:'btn bt-default' %>
+<% end %>
+
+<h3 class="page-header">Images In <%= @category.name %> </h3>
+<div id="edit_images">
+	<% if @images.exists? %>
+		<% @images.each_slice(6) do |image| %>
+			<div class="row" >
+				<% image.each do |image| %>
+					<div class="col-md-2">
+						<%= image_tag image.image_url(:thumb) %>
+						<center><%= link_to "Delete", image_path(image), class:"delete", method: :delete, data: {confirm: "Are you sure?"} %></center>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+	<% end %> 
+</div>
